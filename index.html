@@ -139,14 +139,17 @@
       }
 
       .hero {
-        padding: 32px 0 28px;
+        padding: 40px 0 32px;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
-        gap: 28px;
-        align-items: center;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+      }
+
+      .hero-copy {
+        max-width: 900px;
       }
 
       .hero-image {
@@ -159,7 +162,7 @@
 
       .hero-image img {
         width: 100%;
-        aspect-ratio: 746 / 418;
+        aspect-ratio: 16 / 7;
         object-fit: cover;
       }
 
@@ -174,7 +177,7 @@
 
       h1 {
         margin: 0;
-        max-width: 560px;
+        max-width: 900px;
         font-size: clamp(30px, 4vw, 52px);
         line-height: 1.12;
         letter-spacing: 0;
@@ -182,13 +185,14 @@
 
       .lead {
         margin: 16px 0 0;
+        max-width: 840px;
         color: var(--muted);
         font-size: 17px;
       }
 
       .facts {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 10px;
         margin: 24px 0 0;
       }
@@ -558,6 +562,10 @@
         .gallery {
           grid-template-columns: minmax(0, 1fr);
         }
+
+        .facts {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
 
       @media (max-width: 680px) {
@@ -652,13 +660,7 @@
     <main id="top">
       <section class="hero">
         <div class="shell hero-grid">
-          <figure class="hero-image" aria-label="KT Support cover slide">
-            <img
-              src="1787631647407.jpg"
-              alt="KT Support VMCS and Payment Tracking PTS cover"
-            />
-          </figure>
-          <div>
+          <div class="hero-copy">
             <p class="eyebrow">Knowledge Transfer</p>
             <h1>KT-Payment: ระบบ VMCS และ Payment Tracking (PTS)</h1>
             <p class="lead">
@@ -680,10 +682,16 @@
               </div>
               <div class="fact">
                 <strong>Guide</strong>
-                <span>10 HTML support slides</span>
+                <span>12 HTML support slides</span>
               </div>
             </div>
           </div>
+          <figure class="hero-image" aria-label="KT Support cover slide">
+            <img
+              src="1787631647407.jpg"
+              alt="KT Support VMCS and Payment Tracking PTS cover"
+            />
+          </figure>
         </div>
       </section>
 
