@@ -316,8 +316,8 @@
 
       .gallery {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
       }
 
       .slide-card {
@@ -328,13 +328,25 @@
         box-shadow: 0 10px 24px rgba(24, 32, 51, 0.08);
       }
 
+      .slide-card.wide {
+        grid-column: span 2;
+      }
+
       .html-slide {
         display: flex;
-        min-height: 245px;
+        min-height: 330px;
         flex-direction: column;
-        gap: 12px;
-        padding: 18px;
-        background: linear-gradient(145deg, #ffffff, #eef7fb);
+        gap: 16px;
+        padding: 24px;
+        background: #ffffff;
+      }
+
+      .slide-card:nth-child(3n + 2) .html-slide {
+        background: #f2f9fb;
+      }
+
+      .slide-card:nth-child(3n) .html-slide {
+        background: #f8f9fd;
       }
 
       .html-slide h3,
@@ -351,35 +363,54 @@
       }
 
       .html-slide h3 {
-        font-size: 19px;
+        font-size: 24px;
         line-height: 1.22;
       }
 
       .html-slide ul {
         display: grid;
-        gap: 7px;
+        gap: 9px;
         margin: 0;
         padding-left: 18px;
         color: #45556c;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.36;
+      }
+
+      .slide-summary {
+        color: #526276;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .slide-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .slide-columns h4 {
+        margin: 0 0 8px;
+        color: var(--teal);
+        font-size: 13px;
       }
 
       .flow-row {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 5px;
-        margin: auto 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 4px 0;
       }
 
       .flow-node {
-        border: 1px solid #b9d8e7;
-        border-radius: 5px;
+        border: 1px solid #a8d2e5;
+        border-radius: 6px;
         background: #fff;
-        padding: 8px 5px;
+        padding: 9px 12px;
         color: var(--blue);
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 800;
         text-align: center;
       }
@@ -392,17 +423,17 @@
 
       .mini-table {
         display: grid;
-        grid-template-columns: 0.85fr 1.5fr;
+        grid-template-columns: minmax(86px, 0.85fr) 1.5fr;
         overflow: hidden;
         border: 1px solid #cfe1eb;
         border-radius: 5px;
-        font-size: 11px;
-        line-height: 1.25;
+        font-size: 12px;
+        line-height: 1.35;
       }
 
       .mini-table span {
         border-bottom: 1px solid #e2edf2;
-        padding: 6px 7px;
+        padding: 8px 9px;
       }
 
       .mini-table span:nth-last-child(-n + 2) {
@@ -420,6 +451,19 @@
         color: var(--muted);
         font-size: 11px;
         font-weight: 700;
+      }
+
+      .alert-note {
+        border-left: 4px solid var(--rose);
+        background: #fff2f3;
+        padding: 10px 12px;
+        color: #7e3f49;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .slide-card.wide .html-slide {
+        min-height: 300px;
       }
 
       .status-strip {
@@ -492,6 +536,10 @@
 
         .gallery {
           display: grid;
+        }
+
+        .slide-card.wide {
+          grid-column: span 1;
         }
 
         .hero {
@@ -586,7 +634,7 @@
           <div class="section-head">
             <div>
               <h2>Slides Preview</h2>
-              <p class="section-note">HTML slides rebuilt from the KT-Payment support deck.</p>
+              <p class="section-note">Support guide rebuilt in HTML from the KT-Payment handover document and deck.</p>
             </div>
           </div>
           <div class="gallery" aria-label="Slide gallery">
@@ -594,72 +642,73 @@
               <div class="html-slide">
                 <p class="slide-kicker">Slide 01 | Knowledge transfer</p>
                 <h3>VMCS / Payment Tracking (PTS)</h3>
-                <p>Support Handover Guide</p>
-                <p class="slide-footer">25 August 2026</p>
+                <p class="slide-summary">คู่มือส่งมอบความรู้สำหรับทีม Support เพื่อรับมือ Incident, Integration, Vendor Account และฟังก์ชัน Vendor หลังการเชื่อมต่อ VMCS / SAP</p>
+                <p class="slide-footer">Support Handover | 25 August 2026</p>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 02 | Agenda</p>
+                <p class="slide-kicker">Slide 02 | Support scope</p>
                 <h3>Scope ที่ Support ต้องดูแล</h3>
-                <ul><li>ภาพรวมระบบและ Scope</li><li>การเชื่อมต่อ VMCS / PTS / SAP / Authentication</li><li>Vendor functions และการเปลี่ยนแปลงสำคัญ</li><li>Create / Update Account API</li></ul>
+                <ul><li>แยกต้นตอของปัญหาระหว่าง VMCS, PTS, SAP และ Authentication/MuleSoft</li><li>ตรวจ Login, สิทธิ์ใช้งาน, Vendor Account และ Account Status</li><li>ติดตามข้อมูลที่รับจาก VMCS และ SAP ก่อนกระทบหน้าจอ Vendor</li><li>ทำ Checklist ให้ครบก่อนส่งต่อ Incident ไป Development</li></ul>
               </div>
             </article>
-            <article class="slide-card">
+            <article class="slide-card wide">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 03 | System overview</p>
                 <h3>ระบบที่เชื่อมต่อกัน</h3>
-                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS</span><span class="flow-arrow">→</span><span class="flow-node">PTS</span><span class="flow-arrow">→</span><span class="flow-node">SAP</span></div>
-                <ul><li>VMCS เป็นจุดเข้าใช้งานหลักของ Vendor</li><li>PTS รับข้อมูลธุรกรรมและ Vendor Master จาก SAP</li></ul>
+                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS<br />Login / Sign Up / Portal</span><span class="flow-arrow">→</span><span class="flow-node">PTS / SWR / POTS<br />Account &amp; Payment</span><span class="flow-arrow">←</span><span class="flow-node">SAP<br />Invoice / Vendor Master</span><span class="flow-node">MuleSoft<br />Authentication</span></div>
+                <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 04 | Key changes</p>
                 <h3>Payment Tracking (PTS)</h3>
-                <ul><li>รองรับ SAP field, length และ code mapping ใหม่</li><li>เพิ่ม API Vendor Create / Update / Inactive</li><li>ย้ายข้อมูลไป Database structure ใหม่</li><li>ปรับ shared component ให้ VMCS เรียกใช้ได้</li></ul>
+                <ul><li><strong>SAP:</strong> รองรับ Column, Field Type, Length และ Code Mapping ที่เปลี่ยน เช่น Payment Block / Payment Method</li><li><strong>VMCS:</strong> เพิ่ม API สำหรับ Vendor Create / Update / Inactive</li><li><strong>Migration:</strong> ย้ายข้อมูลเดิมไปยังโครงสร้าง Database ใหม่หลายตาราง</li><li><strong>Authentication:</strong> เปลี่ยนจาก Orchestra เป็น MuleSoft</li></ul>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 05 | Vendor functions</p>
-                <h3>ฟังก์ชันที่ควรรู้</h3>
-                <div class="mini-table"><span>Login</span><span>ใช้ OpenID ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS</span><span>Invoice</span><span>List / Export ยังใช้งาน</span><span>FAQs</span><span>อาจอยู่ PTS หรือรวมกับ VMCS</span></div>
+                <h3>ฟังก์ชันที่ Support ควรรู้</h3>
+                <div class="mini-table"><span>Login</span><span>Login เดิมของ PTS ไม่ใช้แล้ว; Vendor ใช้ OpenID / Azure B2C ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS; ไม่ควรใช้อีเมลจาก Registration เดิมของ PTS</span><span>Landing Page</span><span>เข้าผ่าน Vendor Collaboration / VMCS Portal</span><span>Invoice</span><span>List และ Export Excel ยังใช้ PaymentTracking_List / Invoice blocks</span><span>Contact / FAQs</span><span>ยังใช้งานได้; อาจ Open ไป PTS หรือรวมกับ VMCS ตาม design ล่าสุด</span></div>
               </div>
             </article>
-            <article class="slide-card">
+            <article class="slide-card wide">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 06 | Account API</p>
                 <h3>Create / Update Account</h3>
-                <ul><li><strong>POST</strong> /VMCS/CreateUpdateAccount</li><li>Authorization: Bearer Token</li><li>VMCS ส่งข้อมูลไปยัง PTS</li><li>ตรวจ vendorCode, companyCode, userAccount และ accountStatus</li></ul>
+                <div class="slide-columns"><div><h4>Contract</h4><ul><li><strong>Method:</strong> POST</li><li><strong>Endpoint:</strong> /VMCS/CreateUpdateAccount</li><li><strong>Authorization:</strong> Bearer Token</li><li><strong>Content-Type:</strong> application/json</li></ul></div><div><h4>Responsibility</h4><ul><li><strong>Consumer:</strong> VMCS</li><li><strong>Provider:</strong> SWR, PTS/POTS</li><li>ใช้สร้าง แก้ไข หรือยกเลิกสิทธิ์ Vendor Account</li><li>บันทึกเวลา request เพื่อใช้เทียบ Log ทุกครั้ง</li></ul></div></div>
+                <p class="alert-note">ห้ามแนบ Bearer Token, Password หรือ Secret แบบไม่ปกปิดใน Ticket และ Email</p>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 07 | API response</p>
-                <h3>Error code ที่ต้องตรวจ</h3>
-                <div class="mini-table"><span>200</span><span>ตรวจ User / Vendor ปลายทาง</span><span>400 / 401</span><span>Header, Payload, Token, Client</span><span>500</span><span>Application log / dependency</span><span>503</span><span>Service, network และ retry</span></div>
+                <p class="slide-kicker">Slide 07 | Request body</p>
+                <h3>ฟิลด์สำคัญของ Account</h3>
+                <div class="mini-table"><span>vendorCode</span><span>Vendor Code เช่น 1000551</span><span>companyCode</span><span>Array ของบริษัทที่อนุมัติ เช่น 10, 20, 30</span><span>userAccount</span><span>Email ของ Main Contact ที่ถูก Create / Update / Inactive</span><span>accountStatus</span><span>Active / Inactive</span><span>isRevoke</span><span>สถานะยกเลิกสิทธิ์เข้าใช้งาน</span><span>requestDate</span><span>วันและเวลาทำรายการ ใช้เทียบ Log</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 08 | Troubleshooting</p>
-                <h3>Incident matrix</h3>
-                <ul><li>Login ไม่ได้: VMCS → Account Active → Token/Auth</li><li>Create/Update ไม่เข้า: Payload → Response → Log → DB</li><li>Invoice ไม่ขึ้น: SAP API → Filter → Conversion → DB</li><li>401: Auth/MuleSoft; 500/503: App/Infra</li></ul>
+                <h3>Response / Error Code</h3>
+                <div class="mini-table"><span>200</span><span>Success: ตรวจ User/Vendor ปลายทางว่าถูก Update แล้ว</span><span>201</span><span>Inactive ไม่สำเร็จ: ตรวจ userAccount และ User ถูก Terminate หรือไม่มี Account</span><span>400</span><span>ตรวจ Request, Header, Token และรูปแบบ Payload</span><span>401</span><span>ตรวจ Authorization, Client, Token, สิทธิ์ และ Expiry</span><span>500 / 503</span><span>ตรวจ Application Log, Dependency, Endpoint, Network แล้ว Retry ตามมาตรฐาน</span></div>
               </div>
             </article>
-            <article class="slide-card">
+            <article class="slide-card wide">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 09 | Support runbook</p>
-                <h3>ก่อน Escalate</h3>
-                <ul><li>เก็บ User Email, Vendor Code, Company, เวลา และ screenshot</li><li>ระบุ flow: Login / Sync / Invoice / SAP</li><li>ตรวจ response code และ application log</li><li>API สำเร็จแต่ข้อมูลไม่เปลี่ยน: ตรวจ DB และ PTS logic</li></ul>
+                <p class="slide-kicker">Slide 09 | Incident matrix</p>
+                <h3>ตรวจตามอาการที่พบ</h3>
+                <div class="mini-table"><span>Login ไม่ได้</span><span>VMCS → Account Active → Token/Auth → สิทธิ์ App</span><span>เข้า PTS ไม่ได้</span><span>userAccount → accountStatus → isRevoke → Company Permission</span><span>Create/Update ไม่เข้า</span><span>Request Body → Response Code → Application Log → Database ปลายทาง</span><span>Invoice ไม่ขึ้น</span><span>SAP API → Filter → Response → Data Conversion → Database</span><span>Master ผิด</span><span>ตรวจ Payment Block, Payment Method, Mapping และ Initial Master</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 10 | Support notes</p>
-                <h3>ข้อควรระวัง</h3>
-                <ul><li>ห้ามส่ง Bearer Token, Password หรือ Secret แบบไม่ปกปิด</li><li>ระบุให้ชัดว่าปัญหาเกิดที่ VMCS หรือ PTS</li><li>ปัญหาหลัง migration: แยก source, mapping, conversion และ migration</li><li>SAP เปลี่ยน structure: ตรวจ type, length และ mapping ก่อน</li></ul>
+                <h3>Runbook ก่อน Escalate</h3>
+                <ul><li>เก็บ User Email, Vendor Code, Company Code, Environment, เวลาเกิดเหตุ และ Screenshot</li><li>ระบุ Flow ที่กระทบ: Login, Registration, Account Sync, Invoice หรือ SAP Integration</li><li>ตรวจ Request/Response โดยเน้น userAccount, accountStatus และ isRevoke</li><li>แยก VMCS หรือ PTS ให้ชัด; ปัญหาหลัง Migration ให้ตรวจ Source, Mapping, Conversion และ Migration</li></ul>
               </div>
             </article>
           </div>
