@@ -643,7 +643,7 @@
                   <div class="integration-link">Authentication <b>→</b> VMCS</div>
                   <div class="integration-link">SAP <b>⇄</b> POTS / PTS <span>Invoice &amp; Vendor Master</span></div>
                 </div>
-                <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
+                <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่งข้อมูลมายัง Module PaymentTrackingInterface ผ่าน service PaymentTracking_CreateUpdateAccount</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
             <article class="slide-card">
