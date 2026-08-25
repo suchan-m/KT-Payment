@@ -446,6 +446,31 @@
         font-weight: 800;
       }
 
+      .component-table {
+        display: grid;
+        grid-template-columns: minmax(140px, 0.8fr) minmax(150px, 0.9fr) minmax(220px, 1.4fr);
+        overflow: hidden;
+        border: 1px solid #cfe1eb;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .component-table span {
+        border-bottom: 1px solid #e2edf2;
+        padding: 9px;
+      }
+
+      .component-table span:nth-last-child(-n + 3) {
+        border-bottom: 0;
+      }
+
+      .component-table span:nth-child(3n + 1) {
+        background: #e9f6fb;
+        color: #1d617a;
+        font-weight: 800;
+      }
+
       .slide-footer {
         margin-top: auto !important;
         color: var(--muted);
@@ -460,6 +485,19 @@
         color: #7e3f49;
         font-size: 13px;
         line-height: 1.4;
+      }
+
+      .filter-expression {
+        overflow-wrap: anywhere;
+        margin: 0 !important;
+        border: 1px solid #d5e3eb;
+        border-radius: 5px;
+        background: #f4f8fb;
+        padding: 10px 12px;
+        color: #45556c;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 11px;
+        line-height: 1.5;
       }
 
       .status-strip {
@@ -544,6 +582,18 @@
 
         .integration-map {
           grid-template-columns: 1fr;
+        }
+
+        .component-table {
+          grid-template-columns: 1fr;
+        }
+
+        .component-table span:nth-last-child(-n + 3) {
+          border-bottom: 1px solid #e2edf2;
+        }
+
+        .component-table span:last-child {
+          border-bottom: 0;
         }
 
         .hero {
@@ -643,19 +693,37 @@
                   <div class="integration-link">Authentication <b>→</b> VMCS</div>
                   <div class="integration-link">SAP <b>⇄</b> POTS / PTS <span>Invoice &amp; Vendor Master</span></div>
                 </div>
-                <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่งข้อมูลมายัง Module PaymentTrackingInterface ผ่าน service PaymentTracking_CreateUpdateAccount</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
+                <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่งข้อมูลมายัง Module PaymentTrackingInterface ผ่าน service PaymentTracking_CreateUpdateAccount</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP ผ่าน Timer ที่เรียก GC SAP Gateway</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 04 | Vendor functions</p>
+                <p class="slide-kicker">Slide 04 | SAP data schedule</p>
+                <h3>Timer สำหรับรับข้อมูลจาก SAP</h3>
+                <p class="slide-summary">PTS รัน Timer เพื่อเรียก API ของ application <strong>GC SAP Gateway</strong> และคัดเลือกข้อมูลก่อนนำมาใช้งาน</p>
+                <div class="mini-table"><span>SAPTimer_1_BusinessPartner_Daily</span><span><strong>05:00, 12:00</strong><br />ดึง Business Partner ที่มี CreationDate หรือ LastChangeDate เป็นวันปัจจุบัน</span><span>SAPTimer_2_InvoiceTransaction_Daily</span><span><strong>05:15, 12:15</strong><br />ดึง Invoice ที่เข้าเงื่อนไขประเภทเอกสารและ Supplier ที่กำหนด</span></div>
+                <p class="alert-note">เงื่อนไข Invoice: รับเฉพาะ AccountingDocumentType = KA, KB, KE, KF, KW, KX หรือ ZK; ต้องไม่ถูก reverse และตัด Supplier ที่ขึ้นต้นด้วย 26 หรือ 98 ออก เพื่อคัดเฉพาะรายการที่ PTS ต้องใช้</p>
+                <p class="filter-expression">(AccountingDocumentType eq 'KA' or AccountingDocumentType eq 'KB' or AccountingDocumentType eq 'KE' or AccountingDocumentType eq 'KF' or AccountingDocumentType eq 'KW' or AccountingDocumentType eq 'KX' or AccountingDocumentType eq 'ZK') and IsReversed eq false and not startswith(Supplier,'26') and not startswith(Supplier,'98')</p>
+              </div>
+            </article>
+            <article class="slide-card">
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 05 | Portal &amp; shared blocks</p>
+                <h3>Landing Page และ OutSystems Blocks</h3>
+                <div class="slide-columns"><div><h4>Landing Page ผ่าน VMCS</h4><ul><li>Vendor environment: <strong>/VCS</strong></li><li>Internal user environment: <strong>/VMS</strong></li><li>ผู้ใช้เข้าสู่ Landing Page ผ่าน VMCS เพื่อใช้งาน Application PTS</li></ul></div><div><h4>Shared Components</h4><ul><li>Share OutSystems Block หรือ Component อื่นให้ VMCS เรียกใช้งาน</li><li>ตรวจ module และ web block ให้ตรงกับเมนูที่เปิดใช้งาน</li></ul></div></div>
+                <div class="component-table"><span>เมนู Invoice<br />List &amp; Export Excel</span><span>PaymentTracking_List</span><span>WebBlock\Invoice_WB<br />WebBlock\Invoice_Vendor_WB</span><span>เมนู Contact Us</span><span>PaymentTracking_Admin</span><span>WebBlock2\F_Contactus</span><span>เมนู FAQs</span><span>PaymentTracking_List</span><span>WebBlock\FAQs_WB</span></div>
+              </div>
+            </article>
+            <article class="slide-card">
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 06 | Vendor functions</p>
                 <h3>ฟังก์ชันที่ Support ควรรู้</h3>
                 <div class="mini-table"><span>Login</span><span>Login เดิมของ PTS ไม่ใช้แล้ว; Vendor ใช้ OpenID / Azure B2C ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS; ไม่ควรใช้อีเมลจาก Registration เดิมของ PTS</span><span>Landing Page</span><span>เข้าผ่าน Vendor Collaboration / VMCS Portal</span><span>Invoice</span><span>List และ Export Excel ยังใช้ PaymentTracking_List / Invoice blocks</span><span>Contact / FAQs</span><span>ยังใช้งานได้; อาจ Open ไป PTS หรือรวมกับ VMCS ตาม design ล่าสุด</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 05 | Account API</p>
+                <p class="slide-kicker">Slide 07 | Account API</p>
                 <h3>Create / Update Account</h3>
                 <div class="slide-columns"><div><h4>Contract</h4><ul><li><strong>Method:</strong> POST</li><li><strong>Endpoint:</strong> /VMCS/CreateUpdateAccount</li><li><strong>Authorization:</strong> Bearer Token</li><li><strong>Content-Type:</strong> application/json</li></ul></div><div><h4>Responsibility</h4><ul><li><strong>Consumer:</strong> VMCS</li><li><strong>Provider:</strong> SWR, PTS/POTS</li><li>ใช้สร้าง แก้ไข หรือยกเลิกสิทธิ์ Vendor Account</li><li>บันทึกเวลา request เพื่อใช้เทียบ Log ทุกครั้ง</li></ul></div></div>
                 <p class="alert-note">ห้ามแนบ Bearer Token, Password หรือ Secret แบบไม่ปกปิดใน Ticket และ Email</p>
@@ -663,28 +731,28 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 06 | Request body</p>
+                <p class="slide-kicker">Slide 08 | Request body</p>
                 <h3>ฟิลด์สำคัญของ Account</h3>
                 <div class="mini-table"><span>vendorCode</span><span>Vendor Code เช่น 1000551</span><span>companyCode</span><span>Array ของบริษัทที่อนุมัติ เช่น 10, 20, 30</span><span>userAccount</span><span>Email ของ Main Contact ที่ถูก Create / Update / Inactive</span><span>accountStatus</span><span>Active / Inactive</span><span>isRevoke</span><span>สถานะยกเลิกสิทธิ์เข้าใช้งาน</span><span>requestDate</span><span>วันและเวลาทำรายการ ใช้เทียบ Log</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 07 | Troubleshooting</p>
+                <p class="slide-kicker">Slide 09 | Troubleshooting</p>
                 <h3>Response / Error Code</h3>
                 <div class="mini-table"><span>200</span><span>Success: ตรวจ User/Vendor ปลายทางว่าถูก Update แล้ว</span><span>201</span><span>Inactive ไม่สำเร็จ: ตรวจ userAccount และ User ถูก Terminate หรือไม่มี Account</span><span>400</span><span>ตรวจ Request, Header, Token และรูปแบบ Payload</span><span>401</span><span>ตรวจ Authorization, Client, Token, สิทธิ์ และ Expiry</span><span>500 / 503</span><span>ตรวจ Application Log, Dependency, Endpoint, Network แล้ว Retry ตามมาตรฐาน</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 08 | Incident matrix</p>
+                <p class="slide-kicker">Slide 10 | Incident matrix</p>
                 <h3>ตรวจตามอาการที่พบ</h3>
                 <div class="mini-table"><span>Login ไม่ได้</span><span>VMCS → Account Active → Token/Auth → สิทธิ์ App</span><span>เข้า PTS ไม่ได้</span><span>userAccount → accountStatus → isRevoke → Company Permission</span><span>Create/Update ไม่เข้า</span><span>Request Body → Response Code → Application Log → Database ปลายทาง</span><span>Invoice ไม่ขึ้น</span><span>SAP API → Filter → Response → Data Conversion → Database</span><span>Master ผิด</span><span>ตรวจ Payment Block, Payment Method, Mapping และ Initial Master</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 09 | Support notes</p>
+                <p class="slide-kicker">Slide 11 | Support notes</p>
                 <h3>Runbook ก่อน Escalate</h3>
                 <ul><li>เก็บ User Email, Vendor Code, Company Code, Environment, เวลาเกิดเหตุ และ Screenshot</li><li>ระบุ Flow ที่กระทบ: Login, Registration, Account Sync, Invoice หรือ SAP Integration</li><li>ตรวจ Request/Response โดยเน้น userAccount, accountStatus และ isRevoke</li><li>แยก VMCS หรือ PTS ให้ชัด; ปัญหาหลัง Migration ให้ตรวจ Source, Mapping, Conversion และ Migration</li></ul>
               </div>
