@@ -556,11 +556,12 @@
                 <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
-            <article class="slide-card">
+            <article class="slide-card wide">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 04 | Key changes</p>
-                <h3>Payment Tracking (PTS)</h3>
-                <ul><li><strong>SAP:</strong> รองรับ Column, Field Type, Length และ Code Mapping ที่เปลี่ยน เช่น Payment Block / Payment Method</li><li><strong>VMCS:</strong> เพิ่ม API สำหรับ Vendor Create / Update / Inactive</li><li><strong>Migration:</strong> ย้ายข้อมูลเดิมไปยังโครงสร้าง Database ใหม่หลายตาราง</li><li><strong>Authentication:</strong></li></ul>
+                <p class="slide-kicker">Slide 04 | Requirement</p>
+                <h3>Requirement: SAP Data, PTS และ VMCS</h3>
+                <p class="slide-summary">Structure มีการเปลี่ยนแปลง โดย SAP เตรียมข้อมูลตาม Standard และ PTS เลือกเฉพาะฟิลด์ที่จำเป็นต่อการใช้งาน</p>
+                <div class="slide-columns"><div><h4>Data structure ที่ต้องรองรับ</h4><ul><li>ปรับจำนวนคอลัมน์ตามข้อมูล Standard จาก SAP</li><li>ปรับ Field Type, Length หรือ Property อื่น ๆ ที่เกี่ยวข้อง</li><li>ค่า Code ที่ Map บน PTS อาจเปลี่ยน เช่น Payment Block และ Payment Method จึงต้อง Initial Master ใหม่</li></ul></div><div><h4>Integration และการใช้งาน</h4><ul><li>PTS ส่ง Filter ไปยัง SAP เพื่อดึงเฉพาะข้อมูลที่ต้องใช้</li><li>ทำ Data Conversion ก่อนบันทึกข้อมูลลง Database ของ PTS</li><li>Vendor ใช้งาน Portal และ Landing Page ผ่าน VMCS เพื่อเข้าสู่ Application PTS</li><li>Share OutSystems Block หรือ Component อื่น ๆ เพื่อให้ VMCS เรียกใช้งานได้</li></ul></div></div>
               </div>
             </article>
             <article class="slide-card">
