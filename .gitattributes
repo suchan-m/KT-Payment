@@ -1,0 +1,15 @@
+* text=auto
+
+*.md text eol=lf
+*.txt text eol=lf
+
+# Treat generated documents and media as binary assets.
+*.docx binary
+*.pptx binary
+*.xlsx binary
+*.xls binary
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary

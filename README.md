@@ -1,0 +1,29 @@
+# KT Support VMCS Payment Tracking PTS
+
+Repository นี้เก็บเอกสาร, สไลด์, และรูปภาพประกอบของงาน KT Support VMCS Payment Tracking PTS
+
+## Files
+
+- `KT_Support_VMCS_PaymentTracking_PTS.docx` - เอกสารรายละเอียดงาน
+- `KT_Support_VMCS_PaymentTracking_PTS.pptx` - สไลด์นำเสนอ
+- `*.jpg` - รูปภาพประกอบ
+
+## Upload to Git
+
+หลังจากสร้าง repository ปลายทางบน GitHub/GitLab/Bitbucket แล้ว ให้ใช้คำสั่งต่อไปนี้:
+
+```bash
+git remote add origin <repository-url>
+git branch -M main
+git add .
+git commit -m "Initial KT support materials"
+git push -u origin main
+```
+
+ถ้ามี commit อยู่แล้ว ให้ใช้:
+
+```bash
+git remote add origin <repository-url>
+git branch -M main
+git push -u origin main
+```
