@@ -1,6 +1,6 @@
-# KT Support VMCS Payment Tracking PTS
+# KT-Payment
 
-Repository นี้เก็บเอกสาร, สไลด์, และรูปภาพประกอบของงาน KT Support VMCS Payment Tracking PTS
+Repository นี้เก็บเอกสาร, สไลด์, และรูปภาพประกอบของงาน KT-Payment: VMCS และ Payment Tracking PTS
 
 ## Web Page
 
