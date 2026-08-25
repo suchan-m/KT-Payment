@@ -2,8 +2,13 @@
 
 Repository นี้เก็บเอกสาร, สไลด์, และรูปภาพประกอบของงาน KT Support VMCS Payment Tracking PTS
 
+## Web Page
+
+เปิดหน้าเว็บได้จากไฟล์ `index.html` หรือผ่าน GitHub Pages หลังเปิดใช้งาน Pages ของ repository
+
 ## Files
 
+- `index.html` - หน้าเว็บสำหรับดูเอกสารและรูปภาพประกอบ
 - `KT_Support_VMCS_PaymentTracking_PTS.docx` - เอกสารรายละเอียดงาน
 - `KT_Support_VMCS_PaymentTracking_PTS.pptx` - สไลด์นำเสนอ
 - `*.jpg` - รูปภาพประกอบ
