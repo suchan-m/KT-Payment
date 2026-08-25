@@ -552,14 +552,14 @@
               <div class="html-slide">
                 <p class="slide-kicker">Slide 02 | Support scope</p>
                 <h3>Scope ที่ Support ต้องดูแล</h3>
-                <ul><li>แยกต้นตอของปัญหาระหว่าง VMCS, PTS, SAP และ Authentication/MuleSoft</li><li>ตรวจ Login, สิทธิ์ใช้งาน, Vendor Account และ Account Status</li><li>ติดตามข้อมูลที่รับจาก VMCS และ SAP ก่อนกระทบหน้าจอ Vendor</li><li>ทำ Checklist ให้ครบก่อนส่งต่อ Incident ไป Development</li></ul>
+                <ul><li>แยกต้นตอของปัญหาระหว่าง VMCS, PTS, SAP และ Authentication</li><li>ตรวจ Login, สิทธิ์ใช้งาน, Vendor Account และ Account Status</li><li>ติดตามข้อมูลที่รับจาก VMCS และ SAP ก่อนกระทบหน้าจอ Vendor</li><li>ทำ Checklist ให้ครบก่อนส่งต่อ Incident ไป Development</li></ul>
               </div>
             </article>
             <article class="slide-card wide">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 03 | System overview</p>
                 <h3>ระบบที่เชื่อมต่อกัน</h3>
-                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS<br />Login / Sign Up / Portal</span><span class="flow-arrow">→</span><span class="flow-node">PTS / SWR / POTS<br />Account &amp; Payment</span><span class="flow-arrow">←</span><span class="flow-node">SAP<br />Invoice / Vendor Master</span><span class="flow-node">MuleSoft<br />Authentication</span></div>
+                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS<br />Login / Sign Up / Portal</span><span class="flow-arrow">→</span><span class="flow-node">PTS / SWR / POTS<br />Account &amp; Payment</span><span class="flow-arrow">←</span><span class="flow-node">SAP<br />Invoice / Vendor Master</span><span class="flow-node">Authentication</span></div>
                 <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
@@ -567,7 +567,7 @@
               <div class="html-slide">
                 <p class="slide-kicker">Slide 04 | Key changes</p>
                 <h3>Payment Tracking (PTS)</h3>
-                <ul><li><strong>SAP:</strong> รองรับ Column, Field Type, Length และ Code Mapping ที่เปลี่ยน เช่น Payment Block / Payment Method</li><li><strong>VMCS:</strong> เพิ่ม API สำหรับ Vendor Create / Update / Inactive</li><li><strong>Migration:</strong> ย้ายข้อมูลเดิมไปยังโครงสร้าง Database ใหม่หลายตาราง</li><li><strong>Authentication:</strong> เปลี่ยนจาก Orchestra เป็น MuleSoft</li></ul>
+                <ul><li><strong>SAP:</strong> รองรับ Column, Field Type, Length และ Code Mapping ที่เปลี่ยน เช่น Payment Block / Payment Method</li><li><strong>VMCS:</strong> เพิ่ม API สำหรับ Vendor Create / Update / Inactive</li><li><strong>Migration:</strong> ย้ายข้อมูลเดิมไปยังโครงสร้าง Database ใหม่หลายตาราง</li><li><strong>Authentication:</strong></li></ul>
               </div>
             </article>
             <article class="slide-card">
