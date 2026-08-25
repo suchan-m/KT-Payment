@@ -252,68 +252,6 @@
         font-size: 14px;
       }
 
-      .doc-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .doc-card {
-        display: flex;
-        min-height: 132px;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--paper);
-        padding: 20px;
-      }
-
-      .doc-card h3 {
-        margin: 0;
-        font-size: 18px;
-        letter-spacing: 0;
-      }
-
-      .doc-card p {
-        margin: 6px 0 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .file-badge {
-        display: inline-flex;
-        min-width: 74px;
-        justify-content: center;
-        border-radius: 8px;
-        padding: 8px 10px;
-        color: #fff;
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      .file-badge.docx {
-        background: var(--teal);
-      }
-
-      .file-badge.pptx {
-        background: var(--rose);
-      }
-
-      .reference-badge {
-        display: inline-flex;
-        align-items: center;
-        border: 1px solid #c8d6e4;
-        border-radius: 8px;
-        background: #f5f8fb;
-        padding: 9px 11px;
-        color: #526276;
-        font-size: 13px;
-        font-weight: 800;
-        white-space: nowrap;
-      }
-
       .gallery {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -514,24 +452,18 @@
         }
 
         .nav-actions,
-        .doc-grid,
         .facts,
         .gallery {
           grid-template-columns: 1fr;
         }
 
         .nav-actions,
-        .doc-card,
         .section-head {
           flex-direction: column;
         }
 
         .button {
           width: 100%;
-        }
-
-        .doc-card {
-          align-items: flex-start;
         }
 
         .gallery {
@@ -555,9 +487,8 @@
           <span class="brand-mark">KP</span>
           <span>VMCS Payment Tracking PTS</span>
         </a>
-        <nav class="nav-actions" aria-label="Document links">
-          <a class="button" href="#documents">Documents</a>
-          <a class="button primary" href="#slides">Slides</a>
+        <nav class="nav-actions" aria-label="Page navigation">
+          <a class="button primary" href="#slides">Support Guide</a>
         </nav>
       </div>
     </header>
@@ -592,39 +523,10 @@
                 <span>VMCS, PTS, SAP</span>
               </div>
               <div class="fact">
-                <strong>Assets</strong>
-                <span>1 document, 1 deck, 10 images</span>
+                <strong>Guide</strong>
+                <span>10 HTML support slides</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="documents">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <h2>Documents</h2>
-              <p class="section-note">Core KT-Payment reference materials for review and handoff.</p>
-            </div>
-          </div>
-          <div class="doc-grid">
-            <article class="doc-card">
-              <div>
-                <span class="file-badge docx">DOCX</span>
-                <h3>KT Support VMCS Payment Tracking PTS</h3>
-                <p>เอกสารรายละเอียดงานและแนวทาง Support</p>
-              </div>
-              <span class="reference-badge">Reference only</span>
-            </article>
-            <article class="doc-card">
-              <div>
-                <span class="file-badge pptx">PPTX</span>
-                <h3>KT Support VMCS Payment Tracking PTS</h3>
-                <p>สไลด์ประกอบการถ่ายทอดความรู้</p>
-              </div>
-              <span class="reference-badge">Reference only</span>
-            </article>
           </div>
         </div>
       </section>
