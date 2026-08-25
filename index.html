@@ -301,6 +301,19 @@
         background: var(--rose);
       }
 
+      .reference-badge {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #c8d6e4;
+        border-radius: 8px;
+        background: #f5f8fb;
+        padding: 9px 11px;
+        color: #526276;
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
       .gallery {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -544,7 +557,7 @@
           <div class="section-head">
             <div>
               <h2>Documents</h2>
-              <p class="section-note">Core KT-Payment materials for review and handoff.</p>
+              <p class="section-note">Core KT-Payment reference materials for review and handoff.</p>
             </div>
           </div>
           <div class="doc-grid">
@@ -554,13 +567,7 @@
                 <h3>KT Support VMCS Payment Tracking PTS</h3>
                 <p>เอกสารรายละเอียดงานและแนวทาง Support</p>
               </div>
-              <a
-                class="button"
-                href="KT_Support_VMCS_PaymentTracking_PTS.docx"
-                download
-              >
-                Download
-              </a>
+              <span class="reference-badge">Reference only</span>
             </article>
             <article class="doc-card">
               <div>
@@ -568,13 +575,7 @@
                 <h3>KT Support VMCS Payment Tracking PTS</h3>
                 <p>สไลด์ประกอบการถ่ายทอดความรู้</p>
               </div>
-              <a
-                class="button"
-                href="KT_Support_VMCS_PaymentTracking_PTS.pptx"
-                download
-              >
-                Download
-              </a>
+              <span class="reference-badge">Reference only</span>
             </article>
           </div>
         </div>
