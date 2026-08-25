@@ -266,10 +266,6 @@
         box-shadow: 0 10px 24px rgba(24, 32, 51, 0.08);
       }
 
-      .slide-card.wide {
-        grid-column: span 2;
-      }
-
       .html-slide {
         display: flex;
         min-height: 330px;
@@ -400,10 +396,6 @@
         line-height: 1.4;
       }
 
-      .slide-card.wide .html-slide {
-        min-height: 300px;
-      }
-
       .status-strip {
         margin: 10px 0 40px;
         border-top: 1px solid var(--line);
@@ -468,10 +460,6 @@
 
         .gallery {
           display: grid;
-        }
-
-        .slide-card.wide {
-          grid-column: span 1;
         }
 
         .hero {
@@ -548,7 +536,7 @@
                 <p class="slide-footer">Support Handover | 25 August 2026</p>
               </div>
             </article>
-            <article class="slide-card wide">
+            <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 03 | System overview</p>
                 <h3>ระบบที่เชื่อมต่อกัน</h3>
@@ -556,7 +544,7 @@
                 <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
-            <article class="slide-card wide">
+            <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 04 | Requirement</p>
                 <h3>Requirement: SAP Data, PTS และ VMCS</h3>
@@ -571,7 +559,7 @@
                 <div class="mini-table"><span>Login</span><span>Login เดิมของ PTS ไม่ใช้แล้ว; Vendor ใช้ OpenID / Azure B2C ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS; ไม่ควรใช้อีเมลจาก Registration เดิมของ PTS</span><span>Landing Page</span><span>เข้าผ่าน Vendor Collaboration / VMCS Portal</span><span>Invoice</span><span>List และ Export Excel ยังใช้ PaymentTracking_List / Invoice blocks</span><span>Contact / FAQs</span><span>ยังใช้งานได้; อาจ Open ไป PTS หรือรวมกับ VMCS ตาม design ล่าสุด</span></div>
               </div>
             </article>
-            <article class="slide-card wide">
+            <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 06 | Account API</p>
                 <h3>Create / Update Account</h3>
@@ -593,7 +581,7 @@
                 <div class="mini-table"><span>200</span><span>Success: ตรวจ User/Vendor ปลายทางว่าถูก Update แล้ว</span><span>201</span><span>Inactive ไม่สำเร็จ: ตรวจ userAccount และ User ถูก Terminate หรือไม่มี Account</span><span>400</span><span>ตรวจ Request, Header, Token และรูปแบบ Payload</span><span>401</span><span>ตรวจ Authorization, Client, Token, สิทธิ์ และ Expiry</span><span>500 / 503</span><span>ตรวจ Application Log, Dependency, Endpoint, Network แล้ว Retry ตามมาตรฐาน</span></div>
               </div>
             </article>
-            <article class="slide-card wide">
+            <article class="slide-card">
               <div class="html-slide">
                 <p class="slide-kicker">Slide 09 | Incident matrix</p>
                 <h3>ตรวจตามอาการที่พบ</h3>
