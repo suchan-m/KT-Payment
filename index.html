@@ -538,6 +538,14 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
+                <p class="slide-kicker">Slide 02 | Requirement</p>
+                <h3>Requirement: SAP Data, PTS และ VMCS</h3>
+                <p class="slide-summary">Structure มีการเปลี่ยนแปลง โดย SAP เตรียมข้อมูลตาม Standard และ PTS เลือกเฉพาะฟิลด์ที่จำเป็นต่อการใช้งาน</p>
+                <div class="slide-columns"><div><h4>Data structure ที่ต้องรองรับ</h4><ul><li>ปรับจำนวนคอลัมน์ตามข้อมูล Standard จาก SAP</li><li>ปรับ Field Type, Length หรือ Property อื่น ๆ ที่เกี่ยวข้อง</li><li>ค่า Code ที่ Map บน PTS อาจเปลี่ยน เช่น Payment Block และ Payment Method จึงต้อง Initial Master ใหม่</li></ul></div><div><h4>Integration และการใช้งาน</h4><ul><li>PTS ส่ง Filter ไปยัง SAP เพื่อดึงเฉพาะข้อมูลที่ต้องใช้</li><li>ทำ Data Conversion ก่อนบันทึกข้อมูลลง Database ของ PTS</li><li>Vendor ใช้งาน Portal และ Landing Page ผ่าน VMCS เพื่อเข้าสู่ Application PTS</li><li>Share OutSystems Block หรือ Component อื่น ๆ เพื่อให้ VMCS เรียกใช้งานได้</li></ul></div></div>
+              </div>
+            </article>
+            <article class="slide-card">
+              <div class="html-slide">
                 <p class="slide-kicker">Slide 03 | System overview</p>
                 <h3>ระบบที่เชื่อมต่อกัน</h3>
                 <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS<br />Login / Sign Up / Portal</span><span class="flow-arrow">→</span><span class="flow-node">POTS<br />Account &amp; Payment</span><span class="flow-arrow">←</span><span class="flow-node">SAP<br />Invoice / Vendor Master</span><span class="flow-node">Authentication</span></div>
@@ -546,22 +554,14 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 04 | Requirement</p>
-                <h3>Requirement: SAP Data, PTS และ VMCS</h3>
-                <p class="slide-summary">Structure มีการเปลี่ยนแปลง โดย SAP เตรียมข้อมูลตาม Standard และ PTS เลือกเฉพาะฟิลด์ที่จำเป็นต่อการใช้งาน</p>
-                <div class="slide-columns"><div><h4>Data structure ที่ต้องรองรับ</h4><ul><li>ปรับจำนวนคอลัมน์ตามข้อมูล Standard จาก SAP</li><li>ปรับ Field Type, Length หรือ Property อื่น ๆ ที่เกี่ยวข้อง</li><li>ค่า Code ที่ Map บน PTS อาจเปลี่ยน เช่น Payment Block และ Payment Method จึงต้อง Initial Master ใหม่</li></ul></div><div><h4>Integration และการใช้งาน</h4><ul><li>PTS ส่ง Filter ไปยัง SAP เพื่อดึงเฉพาะข้อมูลที่ต้องใช้</li><li>ทำ Data Conversion ก่อนบันทึกข้อมูลลง Database ของ PTS</li><li>Vendor ใช้งาน Portal และ Landing Page ผ่าน VMCS เพื่อเข้าสู่ Application PTS</li><li>Share OutSystems Block หรือ Component อื่น ๆ เพื่อให้ VMCS เรียกใช้งานได้</li></ul></div></div>
-              </div>
-            </article>
-            <article class="slide-card">
-              <div class="html-slide">
-                <p class="slide-kicker">Slide 05 | Vendor functions</p>
+                <p class="slide-kicker">Slide 04 | Vendor functions</p>
                 <h3>ฟังก์ชันที่ Support ควรรู้</h3>
                 <div class="mini-table"><span>Login</span><span>Login เดิมของ PTS ไม่ใช้แล้ว; Vendor ใช้ OpenID / Azure B2C ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS; ไม่ควรใช้อีเมลจาก Registration เดิมของ PTS</span><span>Landing Page</span><span>เข้าผ่าน Vendor Collaboration / VMCS Portal</span><span>Invoice</span><span>List และ Export Excel ยังใช้ PaymentTracking_List / Invoice blocks</span><span>Contact / FAQs</span><span>ยังใช้งานได้; อาจ Open ไป PTS หรือรวมกับ VMCS ตาม design ล่าสุด</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 06 | Account API</p>
+                <p class="slide-kicker">Slide 05 | Account API</p>
                 <h3>Create / Update Account</h3>
                 <div class="slide-columns"><div><h4>Contract</h4><ul><li><strong>Method:</strong> POST</li><li><strong>Endpoint:</strong> /VMCS/CreateUpdateAccount</li><li><strong>Authorization:</strong> Bearer Token</li><li><strong>Content-Type:</strong> application/json</li></ul></div><div><h4>Responsibility</h4><ul><li><strong>Consumer:</strong> VMCS</li><li><strong>Provider:</strong> SWR, PTS/POTS</li><li>ใช้สร้าง แก้ไข หรือยกเลิกสิทธิ์ Vendor Account</li><li>บันทึกเวลา request เพื่อใช้เทียบ Log ทุกครั้ง</li></ul></div></div>
                 <p class="alert-note">ห้ามแนบ Bearer Token, Password หรือ Secret แบบไม่ปกปิดใน Ticket และ Email</p>
@@ -569,28 +569,28 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 07 | Request body</p>
+                <p class="slide-kicker">Slide 06 | Request body</p>
                 <h3>ฟิลด์สำคัญของ Account</h3>
                 <div class="mini-table"><span>vendorCode</span><span>Vendor Code เช่น 1000551</span><span>companyCode</span><span>Array ของบริษัทที่อนุมัติ เช่น 10, 20, 30</span><span>userAccount</span><span>Email ของ Main Contact ที่ถูก Create / Update / Inactive</span><span>accountStatus</span><span>Active / Inactive</span><span>isRevoke</span><span>สถานะยกเลิกสิทธิ์เข้าใช้งาน</span><span>requestDate</span><span>วันและเวลาทำรายการ ใช้เทียบ Log</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 08 | Troubleshooting</p>
+                <p class="slide-kicker">Slide 07 | Troubleshooting</p>
                 <h3>Response / Error Code</h3>
                 <div class="mini-table"><span>200</span><span>Success: ตรวจ User/Vendor ปลายทางว่าถูก Update แล้ว</span><span>201</span><span>Inactive ไม่สำเร็จ: ตรวจ userAccount และ User ถูก Terminate หรือไม่มี Account</span><span>400</span><span>ตรวจ Request, Header, Token และรูปแบบ Payload</span><span>401</span><span>ตรวจ Authorization, Client, Token, สิทธิ์ และ Expiry</span><span>500 / 503</span><span>ตรวจ Application Log, Dependency, Endpoint, Network แล้ว Retry ตามมาตรฐาน</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 09 | Incident matrix</p>
+                <p class="slide-kicker">Slide 08 | Incident matrix</p>
                 <h3>ตรวจตามอาการที่พบ</h3>
                 <div class="mini-table"><span>Login ไม่ได้</span><span>VMCS → Account Active → Token/Auth → สิทธิ์ App</span><span>เข้า PTS ไม่ได้</span><span>userAccount → accountStatus → isRevoke → Company Permission</span><span>Create/Update ไม่เข้า</span><span>Request Body → Response Code → Application Log → Database ปลายทาง</span><span>Invoice ไม่ขึ้น</span><span>SAP API → Filter → Response → Data Conversion → Database</span><span>Master ผิด</span><span>ตรวจ Payment Block, Payment Method, Mapping และ Initial Master</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 10 | Support notes</p>
+                <p class="slide-kicker">Slide 09 | Support notes</p>
                 <h3>Runbook ก่อน Escalate</h3>
                 <ul><li>เก็บ User Email, Vendor Code, Company Code, Environment, เวลาเกิดเหตุ และ Screenshot</li><li>ระบุ Flow ที่กระทบ: Login, Registration, Account Sync, Invoice หรือ SAP Integration</li><li>ตรวจ Request/Response โดยเน้น userAccount, accountStatus และ isRevoke</li><li>แยก VMCS หรือ PTS ให้ชัด; ปัญหาหลัง Migration ให้ตรวจ Source, Mapping, Conversion และ Migration</li></ul>
               </div>
