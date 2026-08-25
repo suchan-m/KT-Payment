@@ -205,10 +205,13 @@
         min-height: 76px;
         border-left: 4px solid var(--teal);
         border-radius: 8px;
-        background: var(--paper);
+        background: rgba(255, 255, 255, 0.36);
         padding: 14px 16px;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.72),
+          0 8px 20px rgba(58, 67, 75, 0.07);
       }
 
       .fact:nth-child(2) {
@@ -270,12 +273,14 @@
 
       .slide-card {
         overflow: hidden;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(255, 255, 255, 0.6);
         border-radius: 8px;
-        background: var(--paper);
-        box-shadow: 0 10px 24px rgba(24, 32, 51, 0.08);
-        backdrop-filter: blur(18px) saturate(115%);
-        -webkit-backdrop-filter: blur(18px) saturate(115%);
+        background: rgba(255, 255, 255, 0.28);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.68),
+          0 12px 28px rgba(58, 67, 75, 0.09);
+        backdrop-filter: blur(20px) saturate(110%);
+        -webkit-backdrop-filter: blur(20px) saturate(110%);
       }
 
       .html-slide {
@@ -284,15 +289,17 @@
         flex-direction: column;
         gap: 16px;
         padding: 24px;
-        background: rgba(255, 255, 255, 0.38);
+        background: rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
       }
 
       .slide-card:nth-child(3n + 2) .html-slide {
-        background: rgba(244, 246, 248, 0.52);
+        background: rgba(244, 246, 248, 0.23);
       }
 
       .slide-card:nth-child(3n) .html-slide {
-        background: rgba(238, 241, 244, 0.5);
+        background: rgba(231, 235, 239, 0.24);
       }
 
       .html-slide h3,
