@@ -315,41 +315,98 @@
         box-shadow: 0 10px 24px rgba(24, 32, 51, 0.08);
       }
 
-      .slide-button {
-        display: block;
-        width: 100%;
-        border: 0;
-        padding: 0;
-        background: transparent;
-        color: inherit;
-        cursor: zoom-in;
-        text-align: left;
+      .html-slide {
+        display: flex;
+        min-height: 245px;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+        background: linear-gradient(145deg, #ffffff, #eef7fb);
       }
 
-      .slide-button:focus-visible {
-        outline: 3px solid rgba(5, 121, 168, 0.36);
-        outline-offset: -3px;
+      .html-slide h3,
+      .html-slide p {
+        margin: 0;
       }
 
-      .slide-card img {
-        width: 100%;
-        aspect-ratio: 746 / 418;
-        object-fit: cover;
+      .slide-kicker {
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
-      .slide-caption {
+      .html-slide h3 {
+        font-size: 19px;
+        line-height: 1.22;
+      }
+
+      .html-slide ul {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding-left: 18px;
+        color: #45556c;
+        font-size: 13px;
+        line-height: 1.36;
+      }
+
+      .flow-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        padding: 12px 14px;
-        color: var(--muted);
-        font-size: 13px;
+        gap: 5px;
+        margin: auto 0;
       }
 
-      .slide-caption strong {
-        color: var(--ink);
-        font-size: 14px;
+      .flow-node {
+        border: 1px solid #b9d8e7;
+        border-radius: 5px;
+        background: #fff;
+        padding: 8px 5px;
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .flow-arrow {
+        color: var(--rose);
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .mini-table {
+        display: grid;
+        grid-template-columns: 0.85fr 1.5fr;
+        overflow: hidden;
+        border: 1px solid #cfe1eb;
+        border-radius: 5px;
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .mini-table span {
+        border-bottom: 1px solid #e2edf2;
+        padding: 6px 7px;
+      }
+
+      .mini-table span:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .mini-table span:nth-child(odd) {
+        background: #e9f6fb;
+        color: #1d617a;
+        font-weight: 800;
+      }
+
+      .slide-footer {
+        margin-top: auto !important;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
       }
 
       .status-strip {
@@ -358,64 +415,6 @@
         padding: 18px 0 0;
         color: var(--muted);
         font-size: 13px;
-      }
-
-      .lightbox {
-        position: fixed;
-        inset: 0;
-        z-index: 30;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(8, 15, 28, 0.86);
-        padding: 24px;
-      }
-
-      .lightbox.is-open {
-        display: flex;
-      }
-
-      .lightbox-panel {
-        width: min(1120px, 100%);
-      }
-
-      .lightbox-toolbar {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 10px;
-        color: #fff;
-      }
-
-      .lightbox-title {
-        margin: 0;
-        font-weight: 750;
-      }
-
-      .lightbox-close {
-        min-width: 42px;
-        min-height: 42px;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.12);
-        color: #fff;
-        cursor: pointer;
-        font-size: 20px;
-        font-weight: 700;
-      }
-
-      .lightbox-close:focus-visible,
-      .lightbox-close:hover {
-        outline: none;
-        background: rgba(255, 255, 255, 0.22);
-      }
-
-      .lightbox img {
-        width: 100%;
-        max-height: calc(100vh - 112px);
-        border-radius: 8px;
-        object-fit: contain;
-        background: #111827;
       }
 
       @media (max-width: 920px) {
@@ -586,69 +585,81 @@
           <div class="section-head">
             <div>
               <h2>Slides Preview</h2>
-              <p class="section-note">Visual reference extracted for quick browsing.</p>
+              <p class="section-note">HTML slides rebuilt from the KT-Payment support deck.</p>
             </div>
           </div>
           <div class="gallery" aria-label="Slide gallery">
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 01" data-src="1787631647407.jpg">
-                <img src="1787631647407.jpg" alt="Slide 01 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 01</strong><span>Cover</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 01 | Knowledge transfer</p>
+                <h3>VMCS / Payment Tracking (PTS)</h3>
+                <p>Support Handover Guide</p>
+                <p class="slide-footer">25 August 2026</p>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 02" data-src="1787631658926.jpg">
-                <img src="1787631658926.jpg" alt="Slide 02 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 02</strong><span>Scope</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 02 | Agenda</p>
+                <h3>Scope ที่ Support ต้องดูแล</h3>
+                <ul><li>ภาพรวมระบบและ Scope</li><li>การเชื่อมต่อ VMCS / PTS / SAP / Authentication</li><li>Vendor functions และการเปลี่ยนแปลงสำคัญ</li><li>Create / Update Account API</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 03" data-src="1787631667356.jpg">
-                <img src="1787631667356.jpg" alt="Slide 03 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 03</strong><span>Flow</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 03 | System overview</p>
+                <h3>ระบบที่เชื่อมต่อกัน</h3>
+                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS</span><span class="flow-arrow">→</span><span class="flow-node">PTS</span><span class="flow-arrow">→</span><span class="flow-node">SAP</span></div>
+                <ul><li>VMCS เป็นจุดเข้าใช้งานหลักของ Vendor</li><li>PTS รับข้อมูลธุรกรรมและ Vendor Master จาก SAP</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 04" data-src="1787631676489.jpg">
-                <img src="1787631676489.jpg" alt="Slide 04 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 04</strong><span>Account</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 04 | Key changes</p>
+                <h3>Payment Tracking (PTS)</h3>
+                <ul><li>รองรับ SAP field, length และ code mapping ใหม่</li><li>เพิ่ม API Vendor Create / Update / Inactive</li><li>ย้ายข้อมูลไป Database structure ใหม่</li><li>ปรับ shared component ให้ VMCS เรียกใช้ได้</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 05" data-src="1787631687241.jpg">
-                <img src="1787631687241.jpg" alt="Slide 05 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 05</strong><span>Payment</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 05 | Vendor functions</p>
+                <h3>ฟังก์ชันที่ควรรู้</h3>
+                <div class="mini-table"><span>Login</span><span>ใช้ OpenID ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS</span><span>Invoice</span><span>List / Export ยังใช้งาน</span><span>FAQs</span><span>อาจอยู่ PTS หรือรวมกับ VMCS</span></div>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 06" data-src="1787631695836.jpg">
-                <img src="1787631695836.jpg" alt="Slide 06 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 06</strong><span>API</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 06 | Account API</p>
+                <h3>Create / Update Account</h3>
+                <ul><li><strong>POST</strong> /VMCS/CreateUpdateAccount</li><li>Authorization: Bearer Token</li><li>VMCS ส่งข้อมูลไปยัง PTS</li><li>ตรวจ vendorCode, companyCode, userAccount และ accountStatus</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 07" data-src="1787631704286.jpg">
-                <img src="1787631704286.jpg" alt="Slide 07 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 07</strong><span>Validation</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 07 | API response</p>
+                <h3>Error code ที่ต้องตรวจ</h3>
+                <div class="mini-table"><span>200</span><span>ตรวจ User / Vendor ปลายทาง</span><span>400 / 401</span><span>Header, Payload, Token, Client</span><span>500</span><span>Application log / dependency</span><span>503</span><span>Service, network และ retry</span></div>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 08" data-src="1787631713218.jpg">
-                <img src="1787631713218.jpg" alt="Slide 08 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 08</strong><span>Troubleshooting</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 08 | Troubleshooting</p>
+                <h3>Incident matrix</h3>
+                <ul><li>Login ไม่ได้: VMCS → Account Active → Token/Auth</li><li>Create/Update ไม่เข้า: Payload → Response → Log → DB</li><li>Invoice ไม่ขึ้น: SAP API → Filter → Conversion → DB</li><li>401: Auth/MuleSoft; 500/503: App/Infra</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 09" data-src="1787631722535.jpg">
-                <img src="1787631722535.jpg" alt="Slide 09 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 09</strong><span>Checklist</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 09 | Support runbook</p>
+                <h3>ก่อน Escalate</h3>
+                <ul><li>เก็บ User Email, Vendor Code, Company, เวลา และ screenshot</li><li>ระบุ flow: Login / Sync / Invoice / SAP</li><li>ตรวจ response code และ application log</li><li>API สำเร็จแต่ข้อมูลไม่เปลี่ยน: ตรวจ DB และ PTS logic</li></ul>
+              </div>
             </article>
             <article class="slide-card">
-              <button class="slide-button" type="button" data-title="Slide 10" data-src="1787631733053.jpg">
-                <img src="1787631733053.jpg" alt="Slide 10 preview" loading="lazy" />
-                <span class="slide-caption"><strong>Slide 10</strong><span>Summary</span></span>
-              </button>
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 10 | Support notes</p>
+                <h3>ข้อควรระวัง</h3>
+                <ul><li>ห้ามส่ง Bearer Token, Password หรือ Secret แบบไม่ปกปิด</li><li>ระบุให้ชัดว่าปัญหาเกิดที่ VMCS หรือ PTS</li><li>ปัญหาหลัง migration: แยก source, mapping, conversion และ migration</li><li>SAP เปลี่ยน structure: ตรวจ type, length และ mapping ก่อน</li></ul>
+              </div>
             </article>
           </div>
           <p class="status-strip">KT-Payment VMCS Payment Tracking PTS - Support Team Training</p>
@@ -656,52 +667,5 @@
       </section>
     </main>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
-      <div class="lightbox-panel">
-        <div class="lightbox-toolbar">
-          <p class="lightbox-title" id="lightbox-title">Slide Preview</p>
-          <button class="lightbox-close" type="button" aria-label="Close preview">X</button>
-        </div>
-        <img id="lightbox-image" src="" alt="" />
-      </div>
-    </div>
-
-    <script>
-      const lightbox = document.querySelector("#lightbox");
-      const lightboxImage = document.querySelector("#lightbox-image");
-      const lightboxTitle = document.querySelector("#lightbox-title");
-      const closeButton = document.querySelector(".lightbox-close");
-
-      function openPreview(button) {
-        const src = button.dataset.src;
-        const title = button.dataset.title;
-        lightboxImage.src = src;
-        lightboxImage.alt = title + " enlarged preview";
-        lightboxTitle.textContent = title;
-        lightbox.classList.add("is-open");
-        closeButton.focus();
-        document.body.style.overflow = "hidden";
-      }
-
-      function closePreview() {
-        lightbox.classList.remove("is-open");
-        lightboxImage.src = "";
-        document.body.style.overflow = "";
-      }
-
-      document.querySelectorAll(".slide-button").forEach((button) => {
-        button.addEventListener("click", () => openPreview(button));
-      });
-
-      closeButton.addEventListener("click", closePreview);
-      lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) closePreview();
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
-          closePreview();
-        }
-      });
-    </script>
   </body>
 </html>
