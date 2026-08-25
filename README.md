@@ -4,7 +4,9 @@ Repository นี้เก็บเอกสาร, สไลด์, และ�
 
 ## Web Page
 
-เปิดหน้าเว็บได้จากไฟล์ `index.html` หรือผ่าน GitHub Pages หลังเปิดใช้งาน Pages ของ repository
+เปิดหน้าเว็บได้จากไฟล์ `index.html`
+
+ถ้าต้องการเปิดผ่าน GitHub Pages จาก URL สาธารณะ repository ต้องเป็น public หรือบัญชี GitHub ต้องอยู่ใน plan ที่รองรับ Pages สำหรับ private repository
 
 ## Files
 
