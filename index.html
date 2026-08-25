@@ -471,6 +471,37 @@
         font-weight: 800;
       }
 
+      .timer-table {
+        display: grid;
+        grid-template-columns: minmax(210px, 1fr) minmax(100px, 0.45fr) minmax(0, 2.1fr);
+        overflow: hidden;
+        border: 1px solid #cfe1eb;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .timer-table span {
+        border-bottom: 1px solid #e2edf2;
+        padding: 9px;
+      }
+
+      .timer-table .timer-head {
+        background: #1d617a;
+        color: #fff;
+        font-weight: 800;
+      }
+
+      .timer-table span:nth-last-child(-n + 3) {
+        border-bottom: 0;
+      }
+
+      .timer-table span:nth-child(3n + 1):not(.timer-head) {
+        background: #e9f6fb;
+        color: #1d617a;
+        font-weight: 800;
+      }
+
       .slide-footer {
         margin-top: auto !important;
         color: var(--muted);
@@ -485,19 +516,6 @@
         color: #7e3f49;
         font-size: 13px;
         line-height: 1.4;
-      }
-
-      .filter-expression {
-        overflow-wrap: anywhere;
-        margin: 0 !important;
-        border: 1px solid #d5e3eb;
-        border-radius: 5px;
-        background: #f4f8fb;
-        padding: 10px 12px;
-        color: #45556c;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 11px;
-        line-height: 1.5;
       }
 
       .status-strip {
@@ -586,6 +604,22 @@
 
         .component-table {
           grid-template-columns: 1fr;
+        }
+
+        .timer-table {
+          grid-template-columns: 1fr;
+        }
+
+        .timer-table .timer-head {
+          display: none;
+        }
+
+        .timer-table span:nth-last-child(-n + 3) {
+          border-bottom: 1px solid #e2edf2;
+        }
+
+        .timer-table span:last-child {
+          border-bottom: 0;
         }
 
         .component-table span:nth-last-child(-n + 3) {
@@ -701,9 +735,8 @@
                 <p class="slide-kicker">Slide 04 | SAP data schedule</p>
                 <h3>Timer สำหรับรับข้อมูลจาก SAP</h3>
                 <p class="slide-summary">PTS รัน Timer เพื่อเรียก API ของ application <strong>GC SAP Gateway</strong> และคัดเลือกข้อมูลก่อนนำมาใช้งาน</p>
-                <div class="mini-table"><span>SAPTimer_1_BusinessPartner_Daily</span><span><strong>05:00, 12:00</strong><br />ดึง Business Partner ที่มี CreationDate หรือ LastChangeDate เป็นวันปัจจุบัน</span><span>SAPTimer_2_InvoiceTransaction_Daily</span><span><strong>05:15, 12:15</strong><br />ดึง Invoice ที่เข้าเงื่อนไขประเภทเอกสารและ Supplier ที่กำหนด</span></div>
+                <div class="timer-table"><span class="timer-head">Timer</span><span class="timer-head">เวลา</span><span class="timer-head">เงื่อนไข</span><span>SAPTimer_1_BusinessPartner_Daily</span><span>05:00, 12:00</span><span>CreationDate หรือ LastChangeDate เป็นวันปัจจุบัน</span><span>SAPTimer_2_InvoiceTransaction_Daily</span><span>05:15, 12:15</span><span>(AccountingDocumentType eq 'KA' or AccountingDocumentType eq 'KB' or AccountingDocumentType eq 'KE' or AccountingDocumentType eq 'KF' or AccountingDocumentType eq 'KW' or AccountingDocumentType eq 'KX' or AccountingDocumentType eq 'ZK') and IsReversed eq false and not startswith(Supplier,'26') and not startswith(Supplier,'98')</span></div>
                 <p class="alert-note">เงื่อนไข Invoice: รับเฉพาะ AccountingDocumentType = KA, KB, KE, KF, KW, KX หรือ ZK; ต้องไม่ถูก reverse และตัด Supplier ที่ขึ้นต้นด้วย 26 หรือ 98 ออก เพื่อคัดเฉพาะรายการที่ PTS ต้องใช้</p>
-                <p class="filter-expression">(AccountingDocumentType eq 'KA' or AccountingDocumentType eq 'KB' or AccountingDocumentType eq 'KE' or AccountingDocumentType eq 'KF' or AccountingDocumentType eq 'KW' or AccountingDocumentType eq 'KX' or AccountingDocumentType eq 'ZK') and IsReversed eq false and not startswith(Supplier,'26') and not startswith(Supplier,'98')</p>
               </div>
             </article>
             <article class="slide-card">
