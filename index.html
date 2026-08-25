@@ -329,30 +329,96 @@
         font-size: 13px;
       }
 
-      .flow-row {
-        display: flex;
+      .system-map {
+        display: grid;
+        grid-template-columns: minmax(150px, 1fr) 64px minmax(190px, 1.25fr) 64px minmax(150px, 1fr);
         align-items: center;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 4px 0;
+        gap: 0;
+        border: 1px solid #cfe1eb;
+        border-radius: 8px;
+        background: #f7fbfd;
+        padding: 20px;
       }
 
-      .flow-node {
-        border: 1px solid #a8d2e5;
-        border-radius: 6px;
+      .system-node {
+        min-height: 104px;
+        border: 1px solid #b9d8e7;
+        border-radius: 7px;
         background: #fff;
-        padding: 9px 12px;
-        color: var(--blue);
+        padding: 16px;
+        box-shadow: 0 6px 14px rgba(24, 32, 51, 0.06);
+      }
+
+      .system-node strong,
+      .system-node span {
+        display: block;
+      }
+
+      .system-node strong {
+        color: var(--ink);
+        font-size: 17px;
+      }
+
+      .system-node span {
+        margin-top: 6px;
+        color: #53657a;
         font-size: 12px;
-        font-weight: 800;
+        line-height: 1.4;
+      }
+
+      .system-node.vmcs {
+        border-color: #78bdce;
+        background: #e9f7fa;
+      }
+
+      .system-node.pots {
+        border-color: #8eb4df;
+        background: #edf4fc;
+      }
+
+      .system-arrow {
+        position: relative;
+        color: var(--rose);
+        font-size: 28px;
+        font-weight: 700;
         text-align: center;
       }
 
-      .flow-arrow {
-        color: var(--rose);
-        font-size: 15px;
+      .system-arrow small {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        width: 110px;
+        transform: translateX(-50%);
+        color: #708096;
+        font-size: 10px;
         font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .integration-map {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .integration-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        border-top: 2px solid #d7e7ee;
+        padding-top: 11px;
+        color: #53657a;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .integration-link b {
+        color: var(--teal);
+        font-size: 16px;
       }
 
       .mini-table {
@@ -462,6 +528,24 @@
           display: grid;
         }
 
+        .system-map {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          padding: 16px;
+        }
+
+        .system-arrow {
+          transform: rotate(90deg);
+        }
+
+        .system-arrow small {
+          display: none;
+        }
+
+        .integration-map {
+          grid-template-columns: 1fr;
+        }
+
         .hero {
           padding-top: 22px;
         }
@@ -548,7 +632,17 @@
               <div class="html-slide">
                 <p class="slide-kicker">Slide 03 | System overview</p>
                 <h3>ระบบที่เชื่อมต่อกัน</h3>
-                <div class="flow-row"><span class="flow-node">Vendor</span><span class="flow-arrow">→</span><span class="flow-node">VMCS<br />Login / Sign Up / Portal</span><span class="flow-arrow">→</span><span class="flow-node">POTS<br />Account &amp; Payment</span><span class="flow-arrow">←</span><span class="flow-node">SAP<br />Invoice / Vendor Master</span><span class="flow-node">Authentication</span></div>
+                <div class="system-map" aria-label="Vendor connects to VMCS, POTS, SAP, and Authentication">
+                  <div class="system-node"><strong>Vendor</strong><span>ผู้ใช้งานและข้อมูล Vendor</span></div>
+                  <div class="system-arrow"><small>Portal</small>→</div>
+                  <div class="system-node vmcs"><strong>VMCS</strong><span>Login, Sign Up, Portal และ Account Sync</span></div>
+                  <div class="system-arrow"><small>Account API</small>→</div>
+                  <div class="system-node pots"><strong>POTS / PTS</strong><span>Account, Payment Tracking และ Data Conversion</span></div>
+                </div>
+                <div class="integration-map" aria-label="System integrations">
+                  <div class="integration-link">Authentication <b>→</b> VMCS</div>
+                  <div class="integration-link">SAP <b>⇄</b> POTS / PTS <span>Invoice &amp; Vendor Master</span></div>
+                </div>
                 <div class="slide-columns"><div><h4>VMCS เป็นจุดเริ่มต้น</h4><ul><li>Vendor เข้าใช้งานและลงทะเบียนผ่าน VMCS</li><li>VMCS ส่ง Create / Update / Inactive Account ไปยังระบบปลายทาง</li></ul></div><div><h4>PTS ประมวลผลข้อมูลธุรกิจ</h4><ul><li>ดึง Invoice และ Vendor Master จาก SAP</li><li>ทำ filter และ data conversion ก่อนบันทึก Database</li></ul></div></div>
               </div>
             </article>
