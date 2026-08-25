@@ -741,7 +741,15 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 05 | Portal &amp; shared blocks</p>
+                <p class="slide-kicker">Slide 05 | Database interface tables</p>
+                <h3>ตารางข้อมูล Interface</h3>
+                <p class="slide-summary">ตารางชั่วคราวใช้รองรับข้อมูลที่รับเข้ามาก่อนตรวจสอบและซิงก์ไปยังตารางหลัก ส่วนตาราง log ใช้ติดตามการทำงานของ Interface</p>
+                <div class="component-table"><span>M_VENDOR_CONTACT</span><span>ข้อมูล VENDOR_CONTACT ทั้งหมด</span><span>เก็บข้อมูลผู้ติดต่อของ Vendor เพื่อให้ระบบอ้างอิงรายละเอียดการติดต่อได้</span><span>M_VENDOR_IMPORT_TEMP</span><span>Temp M_VENDOR_IMPORT_TEMP แล้ว sync ไปยัง M_VENDOR</span><span>ตารางพักข้อมูล Vendor ชั่วคราวก่อนตรวจสอบและซิงก์เข้าสู่ตาราง Vendor หลัก</span><span>T_INVOICE_PAYMENT</span><span>ข้อมูล INVOICE ทั้งหมด</span><span>ตารางหลักสำหรับเก็บข้อมูล Invoice/Payment ที่พร้อมใช้งานใน PTS</span><span>T_INVOICE_INTERFACE_TEMP</span><span>Temp T_INVOICE_INTERFACE_TEMP แล้ว sync ไปยัง T_INVOICE_PAYMENT</span><span>ตารางพักข้อมูล Invoice จาก Interface ก่อนซิงก์เข้าสู่ตาราง Invoice หลัก</span><span>L_INTERFACE_LOG</span><span>Log INTERFACE ทั้งหมดจาก SAP, VMCS</span><span>ใช้ตรวจสอบผลการรับ-ส่งข้อมูล เวลาเกิดเหตุ และข้อผิดพลาดของ Interface</span></div>
+              </div>
+            </article>
+            <article class="slide-card">
+              <div class="html-slide">
+                <p class="slide-kicker">Slide 06 | Portal &amp; shared blocks</p>
                 <h3>Landing Page และ OutSystems Blocks</h3>
                 <div class="slide-columns"><div><h4>Landing Page ผ่าน VMCS</h4><ul><li>Vendor environment: <strong>/VCS</strong></li><li>Internal user environment: <strong>/VMS</strong></li><li>ผู้ใช้เข้าสู่ Landing Page ผ่าน VMCS เพื่อใช้งาน Application PTS</li></ul></div><div><h4>Shared Components</h4><ul><li>Share OutSystems Block หรือ Component อื่นให้ VMCS เรียกใช้งาน</li><li>ตรวจ module และ web block ให้ตรงกับเมนูที่เปิดใช้งาน</li></ul></div></div>
                 <div class="component-table"><span>เมนู Invoice<br />List &amp; Export Excel</span><span>PaymentTracking_List</span><span>WebBlock\Invoice_WB<br />WebBlock\Invoice_Vendor_WB</span><span>เมนู Contact Us</span><span>PaymentTracking_Admin</span><span>WebBlock2\F_Contactus</span><span>เมนู FAQs</span><span>PaymentTracking_List</span><span>WebBlock\FAQs_WB</span></div>
@@ -749,14 +757,14 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 06 | Vendor functions</p>
+                <p class="slide-kicker">Slide 07 | Vendor functions</p>
                 <h3>ฟังก์ชันที่ Support ควรรู้</h3>
                 <div class="mini-table"><span>Login</span><span>Login เดิมของ PTS ไม่ใช้แล้ว; Vendor ใช้ OpenID / Azure B2C ของ VMCS</span><span>Registration</span><span>ย้ายไป Sign Up บน VMCS; ไม่ควรใช้อีเมลจาก Registration เดิมของ PTS</span><span>Landing Page</span><span>เข้าผ่าน Vendor Collaboration / VMCS Portal</span><span>Invoice</span><span>List และ Export Excel ยังใช้ PaymentTracking_List / Invoice blocks</span><span>Contact / FAQs</span><span>ยังใช้งานได้; อาจ Open ไป PTS หรือรวมกับ VMCS ตาม design ล่าสุด</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 07 | Account API</p>
+                <p class="slide-kicker">Slide 08 | Account API</p>
                 <h3>Create / Update Account</h3>
                 <div class="slide-columns"><div><h4>Contract</h4><ul><li><strong>Service:</strong> PaymentTracking_CreateUpdateAccount</li><li><strong>Module:</strong>PaymentTrackingInterface</li>ใช้สร้าง แก้ไข หรือยกเลิกสิทธิ์ Vendor Account</li><li>บันทึกเวลา request เพื่อใช้เทียบ Log ทุกครั้ง</li></ul></div></div>
                 <p class="alert-note">ห้ามแนบ Bearer Token, Password หรือ Secret แบบไม่ปกปิดใน Ticket และ Email</p>
@@ -764,28 +772,28 @@
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 08 | Request body</p>
+                <p class="slide-kicker">Slide 09 | Request body</p>
                 <h3>ฟิลด์สำคัญของ Account</h3>
                 <div class="mini-table"><span>vendorCode</span><span>Vendor Code เช่น 1000551</span><span>companyCode</span><span>Array ของบริษัทที่อนุมัติ เช่น 10, 20, 30</span><span>userAccount</span><span>Email ของ Main Contact ที่ถูก Create / Update / Inactive</span><span>accountStatus</span><span>Active / Inactive</span><span>isRevoke</span><span>สถานะยกเลิกสิทธิ์เข้าใช้งาน</span><span>requestDate</span><span>วันและเวลาทำรายการ ใช้เทียบ Log</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 09 | Troubleshooting</p>
+                <p class="slide-kicker">Slide 10 | Troubleshooting</p>
                 <h3>Response / Error Code</h3>
                 <div class="mini-table"><span>200</span><span>Success: ตรวจ User/Vendor ปลายทางว่าถูก Update แล้ว</span><span>201</span><span>Inactive ไม่สำเร็จ: ตรวจ userAccount และ User ถูก Terminate หรือไม่มี Account</span><span>400</span><span>ตรวจ Request, Header, Token และรูปแบบ Payload</span><span>401</span><span>ตรวจ Authorization, Client, Token, สิทธิ์ และ Expiry</span><span>500 / 503</span><span>ตรวจ Application Log, Dependency, Endpoint, Network แล้ว Retry ตามมาตรฐาน</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 10 | Incident matrix</p>
+                <p class="slide-kicker">Slide 11 | Incident matrix</p>
                 <h3>ตรวจตามอาการที่พบ</h3>
                 <div class="mini-table"><span>Login ไม่ได้</span><span>VMCS → Account Active → Token/Auth → สิทธิ์ App</span><span>เข้า PTS ไม่ได้</span><span>userAccount → accountStatus → isRevoke → Company Permission</span><span>Create/Update ไม่เข้า</span><span>Request Body → Response Code → Application Log → Database ปลายทาง</span><span>Invoice ไม่ขึ้น</span><span>SAP API → Filter → Response → Data Conversion → Database</span><span>Master ผิด</span><span>ตรวจ Payment Block, Payment Method, Mapping และ Initial Master</span></div>
               </div>
             </article>
             <article class="slide-card">
               <div class="html-slide">
-                <p class="slide-kicker">Slide 11 | Support notes</p>
+                <p class="slide-kicker">Slide 12 | Support notes</p>
                 <h3>Runbook ก่อน Escalate</h3>
                 <ul><li>เก็บ User Email, Vendor Code, Company Code, Environment, เวลาเกิดเหตุ และ Screenshot</li><li>ระบุ Flow ที่กระทบ: Login, Registration, Account Sync, Invoice หรือ SAP Integration</li><li>ตรวจ Request/Response โดยเน้น userAccount, accountStatus และ isRevoke</li><li>แยก VMCS หรือ PTS ให้ชัด; ปัญหาหลัง Migration ให้ตรวจ Source, Mapping, Conversion และ Migration</li></ul>
               </div>
