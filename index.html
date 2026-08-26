@@ -105,6 +105,7 @@
       .nav-actions {
         display: flex;
         flex: 0 0 auto;
+        flex-wrap: wrap;
         gap: 10px;
       }
 
@@ -453,6 +454,7 @@
       .mini-table span {
         border-bottom: 1px solid rgba(110, 121, 131, 0.2);
         padding: 8px 9px;
+        overflow-wrap: anywhere;
       }
 
       .mini-table span:nth-last-child(-n + 2) {
@@ -478,6 +480,7 @@
       .component-table span {
         border-bottom: 1px solid rgba(110, 121, 131, 0.2);
         padding: 9px;
+        overflow-wrap: anywhere;
       }
 
       .component-table span:nth-last-child(-n + 3) {
@@ -503,6 +506,7 @@
       .timer-table span {
         border-bottom: 1px solid rgba(110, 121, 131, 0.2);
         padding: 9px;
+        overflow-wrap: anywhere;
       }
 
       .timer-table .timer-head {
@@ -665,6 +669,89 @@
           padding-top: 22px;
         }
       }
+
+      @media print {
+        @page {
+          size: A4;
+          margin: 12mm 10mm;
+        }
+
+        body {
+          background: #fff;
+          font-size: 14px;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .topbar {
+          display: none;
+        }
+
+        .shell {
+          width: 100%;
+        }
+
+        .hero {
+          padding: 0 0 18px;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+
+        .lead {
+          font-size: 15px;
+        }
+
+        .facts {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .fact {
+          min-height: 0;
+          box-shadow: none;
+        }
+
+        .hero-image {
+          box-shadow: none;
+        }
+
+        .section {
+          padding: 18px 0;
+        }
+
+        .section-head {
+          margin-bottom: 12px;
+        }
+
+        .gallery {
+          gap: 12px;
+        }
+
+        .timer-table {
+          grid-template-columns: minmax(150px, 0.85fr) minmax(76px, 0.35fr) minmax(0, 2.1fr);
+          font-size: 11px;
+        }
+
+        .slide-card {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          box-shadow: none;
+        }
+
+        .html-slide {
+          min-height: 0;
+          padding: 16px;
+        }
+
+        .html-slide h3 {
+          font-size: 22px;
+        }
+
+        .status-strip {
+          margin-bottom: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -676,6 +763,8 @@
         </a>
         <nav class="nav-actions" aria-label="Page navigation">
           <a class="button primary" href="#slides">Support Guide</a>
+          <a class="button" href="index.html" download="KT_Payment_Support_Guide.html" aria-label="ดาวน์โหลด HTML">HTML</a>
+          <a class="button" href="output/pdf/KT_Payment_Support_Guide.pdf" download aria-label="ดาวน์โหลด PDF">PDF</a>
         </nav>
       </div>
     </header>

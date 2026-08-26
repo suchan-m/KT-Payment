@@ -11,6 +11,7 @@ Repository นี้เก็บเอกสาร, สไลด์, และ�
 ## Files
 
 - `index.html` - หน้าเว็บสำหรับดูเอกสารและรูปภาพประกอบ
+- `output/pdf/KT_Payment_Support_Guide.pdf` - ไฟล์ PDF สำหรับดาวน์โหลดจากหน้าเว็บ
 - `KT_Support_VMCS_PaymentTracking_PTS.docx` - เอกสารรายละเอียดงาน
 - `KT_Support_VMCS_PaymentTracking_PTS.pptx` - สไลด์นำเสนอ
 - `*.jpg` - รูปภาพประกอบ
