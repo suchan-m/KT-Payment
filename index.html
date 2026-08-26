@@ -143,6 +143,66 @@
         color: #fff;
       }
 
+      .download-menu {
+        position: relative;
+      }
+
+      .download-menu summary {
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .download-menu summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .download-menu summary::after {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 4px;
+        border-top: 5px solid currentColor;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        transition: transform 160ms ease;
+      }
+
+      .download-menu[open] summary::after {
+        transform: rotate(180deg);
+      }
+
+      .download-list {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        display: grid;
+        min-width: 150px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(248, 250, 252, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .download-list a {
+        padding: 11px 14px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .download-list a + a {
+        border-top: 1px solid var(--line);
+      }
+
+      .download-list a:hover,
+      .download-list a:focus-visible {
+        background: rgba(228, 231, 234, 0.86);
+        outline: none;
+      }
+
       .hero {
         padding: 40px 0 32px;
       }
@@ -607,6 +667,16 @@
           width: 100%;
         }
 
+        .download-menu,
+        .download-menu summary {
+          width: 100%;
+        }
+
+        .download-list {
+          position: static;
+          margin-top: 8px;
+        }
+
         h1 {
           font-size: 36px;
         }
@@ -763,8 +833,13 @@
         </a>
         <nav class="nav-actions" aria-label="Page navigation">
           <a class="button primary" href="#slides">Support Guide</a>
-          <a class="button" href="index.html" download="KT_Payment_Support_Guide.html" aria-label="ดาวน์โหลด HTML">HTML</a>
-          <a class="button" href="output/pdf/KT_Payment_Support_Guide.pdf" download aria-label="ดาวน์โหลด PDF">PDF</a>
+          <details class="download-menu">
+            <summary class="button" aria-label="เมนูดาวน์โหลด">Download</summary>
+            <div class="download-list">
+              <a href="index.html" download="KT_Payment_Support_Guide.html">HTML</a>
+              <a href="output/pdf/KT_Payment_Support_Guide.pdf" download>PDF</a>
+            </div>
+          </details>
         </nav>
       </div>
     </header>
